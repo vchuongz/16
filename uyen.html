@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Thiệp 1/6 iem iu 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Comic Sans MS", cursive;
+      overflow: hidden;
+      perspective: 1200px;
+      background: linear-gradient(270deg, #ffd6ec, #d1f2ff, #ffe6f0);
+      background-size: 600% 600%;
+      animation: rgbFlow 20s ease infinite;
+    }
+
+    @keyframes rgbFlow {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    h1 {
+      text-align: center;
+      color: #ff3399;
+      margin-top: 30px;
+      font-size: 2em;
+      animation: pop 1.5s ease infinite alternate;
+    }
+
+    .scene {
+      width: 320px;
+      height: 300px;
+      margin: 40px auto;
+      perspective: 1000px;
+    }
+
+    .carousel {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1s;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #fff0f5cc;
+      border-radius: 20px;
+      box-shadow: 0 0 30px #ffc0cb;
+      padding: 20px;
+      box-sizing: border-box;
+      color: #ff66a3;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+    }
+
+    .slide:nth-child(1) { transform: rotateY(0deg) translateZ(160px); }
+    .slide:nth-child(2) { transform: rotateY(120deg) translateZ(160px); }
+    .slide:nth-child(3) { transform: rotateY(240deg) translateZ(160px); }
+
+    .controls {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .controls button {
+      background: #ff99cc;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 5px;
+      border-radius: 20px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .controls button:hover {
+      background: #ff66a3;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
+    }
+
+    .sticker, .petal {
+      position: absolute;
+      width: 40px;
+      animation: flyUp 6s linear infinite;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .petal {
+      width: 25px;
+      opacity: 0.8;
+      animation: fallDown 7s linear infinite;
+    }
+
+    @keyframes flyUp {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-600px) rotate(360deg); opacity: 0; }
+    }
+
+    @keyframes fallDown {
+      0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(700px) rotate(360deg); opacity: 0; }
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: radial-gradient(circle, #fff, #ff99cc);
+      border-radius: 50%;
+      animation: sparkle 3s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes sparkle {
+      0% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1.5); }
+      100% { opacity: 0; transform: scale(0); }
+    }
+
+    /* Frame styles */
+    .frame1 {
+      border: 4px solid #ff99cc;
+      border-radius: 50%;
+      padding: 3px;
+      background: white;
+    }
+
+    .frame2 {
+      border: 3px dashed #ff66a3;
+      border-radius: 10px;
+      padding: 4px;
+      background: #fff0f5;
+    }
+
+    .frame3 {
+      border: 2px dotted #ffc0cb;
+      border-radius: 0px;
+      padding: 5px;
+      background: #ffffffcc;
+    }
+  </style>
+</head>
+<body>
+  <h1>💌  1/6 cụa iem iu 💌</h1>
+
+  <div class="scene">
+    <div class="carousel" id="carousel">
+      <div class="slide">
+        <p>🎀 Chúc bạn nhỏ của anh gặp được nhiều điều tốt đẹp nhất,<br>
+        mau ăn chóng lớn để sớm ngày được làm <b>‘Vợ Lớn’</b> 💍</p>
+      </div>
+      <div class="slide">
+        <p>🌸 Chúc bạn nhỏ ngày càng xinh xắn, dễ thương,<br>
+        mong bạn nhỏ có tất cả <b>trừ vất vả</b> 🧸</p>
+      </div>
+      <div class="slide">
+        <p>👶 Chúc cho <b>chúng ta</b> lúc nào bên nhau cũng là những đứa trẻ:<br>
+        Buồn là khóc, vui là cười, dỗi thì dỗi xong lại làm hòa 💞</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button onclick="rotateCarousel(0)">1</button>
+    <button onclick="rotateCarousel(1)">2</button>
+    <button onclick="rotateCarousel(2)">3</button>
+  </div>
+
+  <audio id="bgmusic" autoplay loop>
+    <source src="audio/audio.mp3" type="audio/mpeg" />
+  </audio>
+
+  <div style="position: fixed; bottom: 20px; right: 20px; z-index: 999;">
+    <button onclick="toggleMusic()" style="background: #ff99cc; color: white; border: none; padding: 10px 14px; border-radius: 50%; font-size: 20px; box-shadow: 0 0 10px #ff66a3; cursor: pointer;">
+      🎵
+    </button>
+  </div>
+
+  <script>
+    let angle = 0;
+    const carousel = document.getElementById("carousel");
+
+    function rotateCarousel(index) {
+      angle = index * -120;
+      carousel.style.transform = `translateZ(-160px) rotateY(${angle}deg)`;
+    }
+
+    const stickers = [
+      "image/1.jpg",
+      "image/2.jpg",
+      "image/3.jpg",
+      "image/4.jpg",
+      "image/5.png"
+    ];
+
+    const petals = [
+      "image/1.jpg",
+      "image/2.jpg",
+      "image/3.jpg",
+      "image/4.jpg",
+      "image/5.png"
+    ];
+
+    const frameClasses = ["frame1", "frame2", "frame3"];
+
+    // Sticker bay lên
+    setInterval(() => {
+      const img = document.createElement("img");
+      img.src = stickers[Math.floor(Math.random() * stickers.length)];
+      img.className = "sticker " + frameClasses[Math.floor(Math.random() * frameClasses.length)];
+      img.style.left = Math.random() * window.innerWidth + "px";
+      img.style.top = "100vh";
+      img.style.animationDuration = (Math.random() * 2 + 4) + "s";
+      document.body.appendChild(img);
+      setTimeout(() => img.remove(), 6000);
+    }, 400);
+
+    // Petal rơi xuống
+    setInterval(() => {
+      const petal = document.createElement("img");
+      petal.src = petals[Math.floor(Math.random() * petals.length)];
+      petal.className = "petal " + frameClasses[Math.floor(Math.random() * frameClasses.length)];
+      petal.style.left = Math.random() * window.innerWidth + "px";
+      petal.style.top = "-100px";
+      petal.style.animationDuration = (Math.random() * 4 + 5) + "s";
+      document.body.appendChild(petal);
+      setTimeout(() => petal.remove(), 8000);
+    }, 500);
+
+    // Sparkle
+    setInterval(() => {
+      const spark = document.createElement("div");
+      spark.className = "sparkle";
+      spark.style.left = Math.random() * window.innerWidth + "px";
+      spark.style.top = Math.random() * window.innerHeight + "px";
+      document.body.appendChild(spark);
+      setTimeout(() => spark.remove(), 3000);
+    }, 700);
+
+    function toggleMusic() {
+      const music = document.getElementById("bgmusic");
+      if (music.paused) {
+        music.play();
+      } else {
+        music.pause();
+      }
+    }
+  </script>
+</body>
+</html>
