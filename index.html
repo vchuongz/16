@@ -154,6 +154,57 @@
       padding: 5px;
       background: #ffffffcc;
     }
+
+    .floating-text {
+      position: absolute;
+      font-size: 32px;
+      font-weight: bold;
+      font-family: "Comic Sans MS", cursive;
+      pointer-events: none;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(20px) scale(0.9);
+      animation: fadeText 5s ease-in-out forwards;
+    }
+
+    /* Animation sẽ dùng biến CSS --glowColor để tạo viền trùng màu chữ */
+    @keyframes fadeText {
+      0% {
+        opacity: 0;
+        text-shadow:
+          0 0 0px var(--glowColor),
+          0 0 0px var(--glowColor),
+          0 0 0px var(--glowColor);
+      }
+      25% {
+        opacity: 1;
+        transform: translateY(0) scale(1.1);
+        text-shadow:
+          0 0 5px var(--glowColor),
+          0 0 10px var(--glowColor),
+          0 0 20px var(--glowColor);
+      }
+      75% {
+        opacity: 1;
+        transform: translateY(-10px) scale(1);
+        text-shadow:
+          0 0 8px var(--glowColor),
+          0 0 15px var(--glowColor),
+          0 0 30px var(--glowColor);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.9);
+        text-shadow:
+          0 0 0px var(--glowColor),
+          0 0 0px var(--glowColor),
+          0 0 0px var(--glowColor);
+      }
+    }
+
+
+
+
   </style>
 </head>
 <body>
@@ -261,6 +312,32 @@
         music.pause();
       }
     }
+
+
+
+
+    const loveTexts = ["Aishiteru", "I Love U", "Uyên Mèo", "Thúiiii", "Bé Hay dỗi"];
+
+    setInterval(() => {
+      const text = document.createElement("div");
+      text.className = "floating-text";
+      text.textContent = loveTexts[Math.floor(Math.random() * loveTexts.length)];
+      
+      const randomColor = `rgb(${Math.floor(Math.random() * 256)}, 
+                              ${Math.floor(Math.random() * 256)}, 
+                              ${Math.floor(Math.random() * 256)})`;
+
+      text.style.color = randomColor;
+      text.style.setProperty('--glowColor', randomColor);
+      text.style.left = Math.random() * (window.innerWidth - 150) + "px";
+      text.style.top = Math.random() * (window.innerHeight - 100) + "px";
+      
+      document.body.appendChild(text);
+      setTimeout(() => text.remove(), 4000);
+    }, 800);
+
   </script>
+
+  
 </body>
 </html>
